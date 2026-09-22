@@ -21,7 +21,11 @@ from langchain.messages import HumanMessage
 # Evaluation questions in dict format (Luke), making 16. You guys can remove 6 or something if I made too many.
 # ___________________________________________
 
-eval_questions_dict = {1:"What is one houshold item that is using a lot of energy consumption?",
+eval_questions_dict = {1:"What are the current Australian standards for inverters?", # Based on a google suggestion
+                       2:""}
+
+
+placeholder = {1:"What is one houshold item that is using a lot of energy consumption?",
                        2:"How can I reduce my energy consumption?",
                        3:"What is causing the most energy consumption? The fridge, the oven or the kettle?",
                        4:"Would using solar panels reduce energy consumption?",
