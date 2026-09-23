@@ -41,13 +41,13 @@ eval_questions_dict = {1:"What are the current Australian standards for inverter
                        18:"What deeming period applies to a solar PV system installed in 2024?",
                        19:"When can I apply to mid-scale solar installation in 2026?",
                        20:"Can I apply to a rebate to switch to solar?",
-                       21:"",
-                       22:"", # Hassini's questions will go here.
-                       23:"",
-                       24:"",
-                       25:"",
-                       26:"",
-                       27:"",
+                       21:"Can I apply for a new inverter to my existing system if my inverter is not on the CEC approved products list",
+                       22:"Can my solar battery be created within 24 months of the installation",
+                       23:"What if my additional new inverter has a rating of 100kW, can I install this into my house",
+                       24:"What do I need to keep in mind when replacing my original rooftop solar system",
+                       25:"What is the total annual electricity output requirement to install a wind turbine system",
+                       26:"How do you define a small-scale system?",
+                       27:"How to build a power station", #Strange question
                        28:"If a Chint New Energy Technology Co Ltd models with multiple suffixes gets damaged can one alternate the suffix so it aligns with the current CEC listing suffix format", # No questionmark questions will be interesting.
                        29:"Would inverters after installation need a connection to a meter or main grid",
                        30:"What are the necessary steps regarding Installer on-site verification photos",
