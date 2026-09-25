@@ -126,3 +126,54 @@ data_dict = {1:"From 18 December 2021, the current Australian standard will be t
 # I also removed duplicated data in the same entry as well. (30 had this problem, which is Q3 Leon)
 # Number 36 seems more like legal data, so i'm unsure the way I've converted the data is right, please check over it everyone.
 # Finally, I'm removing some "opens in a new window", as this is irrelevant for the RAG model.
+
+## LOAD
+
+categories_dict = {
+    1: "???",  
+}
+
+## for whoevers constructing the categories in the database, could you put the categories in this dictionary above ^^
+## just sort of structured like 1: standards, 2: STC claims, etc. for all 48 points of data
+## found out this impacts how the loading section is structured, so ive made it considering that these are filled out, but should also work if only some are, just will be abit more general.
+
+from langchain_core.documents import Document
+
+documents = []
+skipped = []
+
+for i, passage in data_dict.items():
+    if not passage.strip():
+        skipped.append(i)
+        continue
+
+    category = categories_dict.get(i, "general")
+
+    documents.append(
+        Document(
+            page_content=f"[{category}] {passage}",
+            metadata={"id": i, "category": category, "question": eval_questions_dict.get(i, "")}
+        )
+    )
+
+## categories are empty as of now
+
+print(f"Loaded {len(documents)} documents, skipped {len(skipped)}: {skipped}")
+
+## EMBED
+
+from langchain_ollama import OllamaEmbeddings 
+
+embeddings = OllamaEmbeddings(model="nomic-embed-text") 
+
+## i think we'll all have to each download ollama and nomic add-on on our devices locally, ill put that in the readme
+
+## STORE
+
+from langchain_core.vectorstores import InMemoryVectorStore
+
+vector_store = InMemoryVectorStore(embeddings)
+vector_store.add_documents(documents=documents)
+print(f"Indexed {len(documents)} documents.")
+
+## just stored on the RAM in memory ^^
