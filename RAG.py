@@ -20,55 +20,54 @@ from langchain.messages import HumanMessage
 # ___________________________________________
 # Evaluation questions in dict format (Luke), making 16. You guys can remove 6 or something if I made too many.
 # ___________________________________________
-
-eval_questions_dict = {1:"What are the current Australian standards for inverters?", # Based on a google suggestion
-                       2:"Who should be accredited for STCs?",
-                       3:"What are the maximum daily of installations I can do to claim STCs?",
-                       4:"Can a stackable battery system be eligible for STCs?",
-                       5:"What should my photos look like for evidence to get STCs?",
-                       6:"Do I need to have evidence to get an STC?",
-                       7:"What is the renewable energy target?",
-                       8:"What are Postcode zones?",
-                       9:"What does each postcode zone represent?",
-                       10:"How does the RET work?",
-                       11:"What types of small scale renewable energy systems are eligible under the SRES?",
-                       12:"What capacity and annual electricity output limits apply to wind and hydro systems for STC eligibility?",
-                       13:"When upgrading an existing solar PV system with new panels and an inverter, what conditions must be met for the upgrade to be eligible for STCs?",
-                       14:"If a household completely replaces its existing rooftop solar system, what conditions must the new system meet to be eligible for STCs?",
-                       15:"What is the difference between a small scale system and a power station under the Renewable Energy Target?",
-                       16:"What requirements must a power station meet under the Renewable Energy Target?",
-                       17:"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?",
-                       18:"What deeming period applies to a solar PV system installed in 2024?",
-                       19:"When can I apply to mid-scale solar installation in 2026?",
-                       20:"Can I apply to a rebate to switch to solar?",
-                       21:"Can I apply for a new inverter to my existing system if my inverter is not on the CEC approved products list",
-                       22:"Can my solar battery be created within 24 months of the installation",
-                       23:"What if my additional new inverter has a rating of 100kW, can I install this into my house",
-                       24:"What do I need to keep in mind when replacing my original rooftop solar system",
-                       25:"What is the total annual electricity output requirement to install a wind turbine system",
-                       26:"How do you define a small-scale system?",
-                       27:"How to build a power station", #Strange question
-                       28:"If a Chint New Energy Technology Co Ltd models with multiple suffixes gets damaged can one alternate the suffix so it aligns with the current CEC listing suffix format", # No questionmark questions will be interesting.
-                       29:"Would inverters after installation need a connection to a meter or main grid",
-                       30:"What are the necessary steps regarding Installer on-site verification photos",
-                       31:"Does Force 5S (AS4777-2 2020) come under the list of approved inverters by Clean Energy Council",
-                       32:"Under what circumstances can multiple installers work on the same solar installation?",
-                       33:"Under what circumstances would a STC claim fail:", # colon?
-                       34:"What requirements must products meet to connect to Australian electricity networks using CSIP-AUS?",
-                       35:"What was the New Expiry date of  AERL LiFe2-5120S?",
-                       36:"What is the requirements for the isolation of the inverter inputs when PV is the energy source?",
-                       37:"Is uasge of the new AS/NZS 5033:2021 before the commencement date practical/viable/allowed?", # A typo might be good to test for hallucinations e.c.t.
-                       38:"Which standard governs general electrical installations in Australia?",
-                       39:"What are the most vital OH&S regulations when it comes to installing electrical equipment?",
-                       40:"What tests must be performed before energising new electrical equipment/work?",
-                       41:"How do you verify equipment safety compliance prior to setup?",
-                       42:"What isolation steps are required before starting installation?",
-                       43:"How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?",
-                       44:"Who accredits solar installers in Australia, CEA or SAA?",
-                       45:"What Australian Standard governs the installation of electrical equipment in hazardous areas?",
-                       46:"How often must portable electrical equipment on a worksite be tested?",
-                       47:"What separation distance must be maintained from overhead powerlines during installation work?",
-                       48:"Who is legally authorised to issue a Certificate of Electrical Safety?"}
+eval_questions_dict = {"inverter question":"What are the current Australian standards for inverters?", # Based on a google suggestion
+                       "STC question":"Who should be accredited for STCs?",
+                       "STC question":"What are the maximum daily of installations I can do to claim STCs?",
+                       "STC question":"Can a stackable battery system be eligible for STCs?",
+                       "STC question":"What should my photos look like for evidence to get STCs?",
+                       "STC question":"Do I need to have evidence to get an STC?",
+                       "RET question":"What is the renewable energy target?",
+                       "miscellaneous":"What are Postcode zones?",
+                       "miscellaneous":"What does each postcode zone represent?",
+                       "RET question":"How does the RET work?",
+                       "STC question":"What types of small scale renewable energy systems are eligible under the SRES?",
+                       "STC question":"What capacity and annual electricity output limits apply to wind and hydro systems for STC eligibility?",
+                       "STC question":"When upgrading an existing solar PV system with new panels and an inverter, what conditions must be met for the upgrade to be eligible for STCs?",
+                       "STC question":"If a household completely replaces its existing rooftop solar system, what conditions must the new system meet to be eligible for STCs?",
+                       "RET question":"What is the difference between a small scale system and a power station under the Renewable Energy Target?",
+                       "RET question":"What requirements must a power station meet under the Renewable Energy Target?",
+                       "STC question":"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?",
+                       "Solar question":"What deeming period applies to a solar PV system installed in 2024?",
+                       "installations":"When can I apply to mid-scale solar installation in 2026?",
+                       "Solar question":"Can I apply to a rebate to switch to solar?",
+                       "inverter question":"Can I apply for a new inverter to my existing system if my inverter is not on the CEC approved products list",
+                       "installations":"Can my solar battery be created within 24 months of the installation",
+                       "installations":"What if my additional new inverter has a rating of 100kW, can I install this into my house",
+                       "Solar question":"What do I need to keep in mind when replacing my original rooftop solar system",
+                       "installations":"What is the total annual electricity output requirement to install a wind turbine system",
+                       "miscellaneous":"How do you define a small-scale system?",
+                       "Out-of-scope-question":"How to build a power station", #Strange question
+                       "miscellaneous":"If a Chint New Energy Technology Co Ltd models with multiple suffixes gets damaged can one alternate the suffix so it aligns with the current CEC listing suffix format", # No questionmark questions will be interesting.
+                       "inverter question":"Would inverters after installation need a connection to a meter or main grid",
+                       "evidence/compliance/safety question":"What are the necessary steps regarding Installer on-site verification photos",
+                       "inverter question":"Does Force 5S (AS4777-2 2020) come under the list of approved inverters by Clean Energy Council",
+                       "Solar question":"Under what circumstances can multiple installers work on the same solar installation?",
+                       "STC question":"Under what circumstances would a STC claim fail:", # colon?
+                       "evidence/compliance/safety question":"What requirements must products meet to connect to Australian electricity networks using CSIP-AUS?",
+                       "miscellaneous":"What was the New Expiry date of  AERL LiFe2-5120S?",
+                       "inverter question":"What is the requirements for the isolation of the inverter inputs when PV is the energy source?",
+                       "miscellaneous":"Is uasge of the new AS/NZS 5033:2021 before the commencement date practical/viable/allowed?", # A typo might be good to test for hallucinations e.c.t.
+                       "identifier question (who is in charge)":"Which standard governs general electrical installations in Australia?",
+                       "installations":"What are the most vital OH&S regulations when it comes to installing electrical equipment?",
+                       "evidence/compliance/safety question":"What tests must be performed before energising new electrical equipment/work?",
+                       "evidence/compliance/safety question":"How do you verify equipment safety compliance prior to setup?",
+                       "installations":"What isolation steps are required before starting installation?",
+                       "STC question":"How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?",
+                       "identifier question (who is in charge)":"Who accredits solar installers in Australia, CEA or SAA?",
+                       "identifier question (who is in charge)":"What Australian Standard governs the installation of electrical equipment in hazardous areas?",
+                       "evidence/compliance/safety question":"How often must portable electrical equipment on a worksite be tested?",
+                       "installations":"What separation distance must be maintained from overhead powerlines during installation work?",
+                       "identifier question (who is in charge)":"Who is legally authorised to issue a Certificate of Electrical Safety?"}
 
 
 data_dict = {1:"From 18 December 2021, the current Australian standard will be the AS/NZS 4777.2:2020 version.",
@@ -130,7 +129,15 @@ data_dict = {1:"From 18 December 2021, the current Australian standard will be t
 ## LOAD
 
 categories_dict = {
-    1: "???",  
+    1: "installations",
+    2: "STC question",
+    3: "Out-of-scope-question",
+    4: "inverter question",
+    5: "evidence/compliance/safety question",
+    6: "identifier question (who is in charge)",
+    7: "RET question",
+    8: "miscellaneous",
+    9: "Solar question"
 }
 
 ## for whoevers constructing the categories in the database, could you put the categories in this dictionary above ^^
