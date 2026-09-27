@@ -2,7 +2,10 @@
 
 from langchain_core.documents import Document
 from langchain_ollama import OllamaEmbeddings
-from langchain_core.vectorstores import InMemoryVectorStore
+from langchain_community.vectorstores import FAISS
+from langchain_ollama import OllamaEmbeddings, ChatOllama
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 
 
 # importing data
@@ -43,6 +46,8 @@ def load_into_document_class(data_dict):
     
     return documents 
 
+
+
 def load_data_to_embed_model(data, embedding_model=OllamaEmbeddings(model="nomic-embed-text", base_url="http://localhost:11434")):
     """
     returns the vector conversion of the documents
@@ -52,21 +57,56 @@ def load_data_to_embed_model(data, embedding_model=OllamaEmbeddings(model="nomic
 
     Output:
     List of the vectors: list
-
     """
-    embedding_model = OllamaEmbeddings(model="nomic-embed-text") 
-    vector_store = InMemoryVectorStore(embedding_model)
-    return vector_store.add_documents(documents=data)
+    vector_db = FAISS.from_documents(data, embedding_model)
+    return vector_db
 
 
 
 if __name__ == "__main__":
+
+    # can hyper parameter tune the temperature value
+    llm = ChatOllama(model="llama3", temperature=0)
+
     data_dict = parse_through_json_file("data/data_dict.json")
 
     documents = load_into_document_class(data_dict)
 
     # consider saving this locally (writing up to a diff file)
-    vectors_data = load_data_to_embed_model(documents)
+    vector_db = load_data_to_embed_model(documents)
+
+    retriever = vector_db.as_retriever(
+    search_type="similarity",
+
+    # hyper-parameter k tuning 
+    search_kwargs={"k": 3}
+    )
+
+    query = "What isolation steps are required before starting installation?"
+    print(f"Querying vector database: '{query}'\n")
+    retrieved_chunks = retriever.invoke(query)
+
+    print(f"Total chunks retrieved: {len(retrieved_chunks)}")
+    for idx, doc in enumerate(retrieved_chunks, start=1):
+        print(f"--- Top Match #{idx} ---")
+        print(f"Content: {doc.page_content}")
+        print(f"Metadata: {doc.metadata}\n")
+
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", "You are a helpful assistant. Answer the user's question using ONLY the provided context. If you do not know the answer based on the context, say 'I cannot find that in the documents.'\n\nContext:\n{context}"),
+        ("human", "{input}"),
+    ])
+
+    qa_chain = create_stuff_documents_chain(llm, prompt)
+
+    print("\n--- Llama 3 Generating Answer ---")
+    response = qa_chain.invoke({
+        "input": query,
+        "context": retrieved_chunks
+    })
+
+    print(response)
+
 
     
 

@@ -12,6 +12,12 @@ OR can download from website (https://ollama.com/download)
 
 after downloaded ollama, paste this in powershell: ollama pull nomic-embed-text
 
+3. pull the llm model
+
+paste this is in terminal : ollama pull llama3 
+
+--> this might take a while, the package is around 4.7GB
+
 3. download python packages
 
 navigate into the project folder in powershell, ensuring that requirements.txt is there in the directory
