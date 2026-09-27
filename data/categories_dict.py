@@ -1,11 +1,10 @@
 categories_dict = {
-    "c1": "installations",
-    "c2": "STC question",
-    "c3": "Out-of-scope-question",
-    "c4": "inverter question",
-    "c5": "evidence/compliance/safety question",
-    "c6": "identifier question (who is in charge)",
-    "c7": "RET question",
-    "c8": "miscellaneous",
-    "c9": "Solar question"
+    "c1": "installations", # haasini
+    "c2": "STC question", # haasini
+    "c3": "inverter question", # leon
+    "c4": "evidence/compliance/safety question", # ria
+    "c5": "identifier question (who is in charge)", # haasini
+    "c6": "RET question", # ria
+    "c7": "miscellaneous", # haasini
+    "c8": "Solar question" # leon
 }

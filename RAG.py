@@ -1,48 +1,74 @@
+# importing the models and packages
+
 from langchain_core.documents import Document
 from langchain_ollama import OllamaEmbeddings
 from langchain_core.vectorstores import InMemoryVectorStore
 
 
-## LOAD
-
-## for whoevers constructing the categories in the database, could you put the categories in this dictionary above ^^
-## just sort of structured like 1: standards, 2: STC claims, etc. for all 48 points of data
-## found out this impacts how the loading section is structured, so ive made it considering that these are filled out, but should also work if only some are, just will be abit more general.
-
-
-documents = []
-skipped = []
-
-for i, passage in data_dict.items():
-    if not passage.strip():
-        skipped.append(i)
-        continue
-
-    category = categories_dict.get(i, "general")
-
-    documents.append(
-        Document(
-            page_content=f"[{category}] {passage}",
-            metadata={"id": i, "category": category, "question": eval_questions_dict.get(i, "")}
-        )
-    )
-
-## categories are empty as of now
-
-print(f"Loaded {len(documents)} documents, skipped {len(skipped)}: {skipped}")
-
-## EMBED
+# importing data
+from data.eval_questions_revised import eval_questions_dict, out_of_scope_dict
+from data.categories_dict import categories_dict
+import json
 
 
-embeddings = OllamaEmbeddings(model="nomic-embed-text") 
+def parse_through_json_file(json_file_path):
+    """
+    Reads through a json file
 
-## i think we'll all have to each download ollama and nomic add-on on our devices locally, ill put that in the readme
+    Input:
+    file path: str
 
-## STORE
+    Output:
+    data: dict
+    """
+    with open(f"{json_file_path}", "r") as f:
+        return json.load(f)
 
 
-vector_store = InMemoryVectorStore(embeddings)
-vector_store.add_documents(documents=documents)
-print(f"Indexed {len(documents)} documents.")
+def load_into_document_class(data_dict):
+    """
+    loads the dictionary and converts the seperate values for each key into a document in preparation for the embedding model
 
-## just stored on the RAM in memory ^^
+    Input:
+    data_dict: dict
+    categories_dict: dict
+
+    Output:
+    documents: List[Document]
+    """
+    documents = [
+        Document(page_content=values, metadata={"id":key})
+        for key, values in data_dict.items()
+    ]
+    
+    return documents 
+
+def load_data_to_embed_model(data, embedding_model=OllamaEmbeddings(model="nomic-embed-text", base_url="http://localhost:11434")):
+    """
+    returns the vector conversion of the documents
+
+    Input: 
+    documents : List[Document]
+
+    Output:
+    List of the vectors: list
+
+    """
+    embedding_model = OllamaEmbeddings(model="nomic-embed-text") 
+    vector_store = InMemoryVectorStore(embedding_model)
+    return vector_store.add_documents(documents=data)
+
+
+
+if __name__ == "__main__":
+    data_dict = parse_through_json_file("data/data_dict.json")
+
+    documents = load_into_document_class(data_dict)
+
+    # consider saving this locally (writing up to a diff file)
+    vectors_data = load_data_to_embed_model(documents)
+
+    
+
+
+
