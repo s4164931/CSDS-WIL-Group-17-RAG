@@ -93,17 +93,16 @@ def run_a_singular_query(query, retriever, prompt, llm, testing = False):
             print(f"Content: {doc.page_content}")
             print(f"Metadata: {doc.metadata}\n")
             print(f"====================================")
-
-    qa_chain = create_stuff_documents_chain(llm, prompt)
-
-    response = qa_chain.invoke({
-            "input": query,
-            "context": retrieved_chunks
-        })
     if testing:
         # Also returning the response too.
-        yield response
+        pass
     else:
+        qa_chain = create_stuff_documents_chain(llm, prompt)
+
+        response = qa_chain.invoke({
+                "input": query,
+                "context": retrieved_chunks
+            })
         print(f"========== Generated Anwser ==========")
         print(response)
         print(f"======================================")

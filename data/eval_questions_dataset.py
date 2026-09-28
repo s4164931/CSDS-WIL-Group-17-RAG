@@ -53,19 +53,19 @@ eval_questions_dict = {
                 "id": "c2k1",
                 "question": "What are the maximum daily of installations I can do to claim STCs?",
                 "expected_answer": "No more than 2 installations a day",
-                "source": 3
+                "source_id": 3
             },
             {
                 "id": "c2k2",
                 "question": "Can a stackable battery system be eligible for STCs?",
                 "expected_answer": "Yes. A stackable battery system can be eligible for STCs if the final configuration is on the CEC approved product list, the system is compatible and within manufacturer specifications, and the SAA-accredited installer re-certifies the complete system.",
-                "source": 4 
+                "source_id": 4 
             },
             {
                 "id": "c2k3",
                 "question": "Do I need to have evidence to get an STC?",
                 "expected_answer": "Yes. You must have evidence proving you were on site during the 3 stages of installation. Photos are the easiest method.",
-                "source": 6
+                "source_id": 6
             },
             {
                 "id": "c2k4",
@@ -85,13 +85,13 @@ eval_questions_dict = {
                 "id": "c2i1",
                 "question": "Who should be accredited for STCs?",
                 "expected_answer": "The designer and installer must be accredited by Solar Accreditation Australia (SAA) for the relevant installation type to be eligible for STCs.",
-                "source": [2, 17, 22]
+                "source_id": [2, 17, 22]
             },
             {
                 "id": "c2i2",
                 "question": "What should my photos look like for evidence to get STCs?",
                 "expected_answer": "Photos should clearly show your face and the 3 installation stages: setup, mid-installation and testing/commissioning. They must include date/time metadata and geolocation and match the compliance paperwork.",
-                "source": [5, 30] 
+                "source_id": [5, 30] 
             },
             {
                 "id": "c2i3",
