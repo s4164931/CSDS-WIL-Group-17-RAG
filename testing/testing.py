@@ -4,7 +4,6 @@ import os
 # Adds the root directory (one level up from 'testing') to Python's search path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-
 import RAG
 from data.eval_questions_revised import eval_questions_dict, out_of_scope_dict
 from data.categories_dict import categories_dict
@@ -12,6 +11,8 @@ from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 import json
 import time
+
+import ranx
 test = {}
 llm = ChatOllama(model="llama3", temperature=0)
 
@@ -25,7 +26,9 @@ print("Known and inferrred questions.")
 print("————————————————————————————————————————————————————————————————————————————")
 start = time.time()
 for i in eval_questions_dict:
+    id_type = i
     for j in eval_questions_dict[i]:
+        question_type = j
         for k in eval_questions_dict[i][j]:
             query = k["question"]
             Parsed_data = RAG.parse_through_json_file("data/data_dict.json")
@@ -41,5 +44,7 @@ print(f"Time taken: {end - start:.2f} seconds")
 # k: 1, 2, 3, 5, 10?
 # temperature: 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1
 # search_type: 
+
+# @k - known questions only have 1, inferred have more?
 
 # "Testing by Luke George"
