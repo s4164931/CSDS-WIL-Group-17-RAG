@@ -82,7 +82,7 @@ def run_a_singular_query(query, retriever, prompt, llm):
     # run the top_k algorithim on the query and generate the most similar chunks of data
     retrieved_chunks = retriever.invoke(query)
 
-    print(f"Total chunks retrieved: {len(retrieved_chunks)}")
+    print(f"Total chunks retrieved: {len(retrieved_chunks)}\n")
 
     for idx, doc in enumerate(retrieved_chunks):
         print(f"========= Top Match #{idx} =========")
