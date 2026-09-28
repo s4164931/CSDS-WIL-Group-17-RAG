@@ -1,3 +1,10 @@
+import sys
+import os
+
+# Adds the root directory (one level up from 'testing') to Python's search path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
 import RAG
 from data.eval_questions_revised import eval_questions_dict, out_of_scope_dict
 from data.categories_dict import categories_dict
