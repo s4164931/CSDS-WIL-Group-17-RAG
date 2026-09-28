@@ -11,6 +11,8 @@ from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 import json
 import time
+
+import ranx
 k_value = 5
 def Precision_at_k(predicted, expected, question_type): # should precision only be looking at right things selected? 
     #Even if k is higher than number of source ids?
@@ -56,30 +58,37 @@ print("————————————————————————�
 print("Known and inferrred questions.")
 print("————————————————————————————————————————————————————————————————————————————")
 data_id_dict = {}
-temp_list = []
+qrel_id_dict = {}
+run_id_dict = {}
 start = time.time()
 for i in eval_questions_dict:
-    id_type = i
+    id_type = i # saving this for later
     for j in eval_questions_dict[i]:
         question_type = j
         for k in eval_questions_dict[i][j]:
             query = k["question"]
+            run_id_dict[k["id"]] = {}
+            qrel_id_dict[k["id"]] = {}
             Parsed_data = RAG.parse_through_json_file("data/data_dict.json")
             documents = RAG.load_into_document_class(Parsed_data)
             vectorised_data = RAG.vectoriser(documents)
             retriever = vectorised_data.as_retriever(search_type="similarity", search_kwargs={"k": k_value})
             results = RAG.run_a_singular_query(query, retriever, prompt, llm, testing = True)
-            print(k)
             expected_sources = k["source_id"]
+            if type(expected_sources) == int:
+                expected_sources = [expected_sources]
+            for test_value in expected_sources:
+                qrel_id_dict[k["id"]][str(test_value)] = 1
             for value in results:
                 if type(value) == dict:
-                    temp_list.append(value["id"])
-                else:
-                    answer = value
-            data_id_dict["id"] = temp_list
-            temp_list = []
-            # Now, it is time to tackle the ranking scores: Precision, Recall, Hit-rate, MRR and NDCG. (more if wanted)
-            print(Precision_at_k(data_id_dict, expected_sources, question_type))
+                    run_id_dict[k["id"]][value["id"]] = 1
+# Now, it is time to tackle the ranking scores: Precision, Recall, Hit-rate, MRR and NDCG. (more if wanted)
+qrels = ranx.Qrels(qrel_id_dict)
+print(qrels)
+runs = ranx.Run(run_id_dict)
+print(runs)
+print(ranx.evaluate(qrels, run_id_dict, [f"precision@{k_value}", f"recall@{k_value}", f"hit_rate@{k_value}", f"mrr@{k_value}", f"ndcg@{k_value}"]))
+# print(Precision_at_k(data_id_dict, expected_sources, question_type))
 
 end = time.time()
 print(f"Time taken: {end - start:.2f} seconds")
