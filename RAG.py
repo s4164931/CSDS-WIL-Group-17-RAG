@@ -8,7 +8,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 
 
-# importing data
+# importing data + functions from other python files
 from data.eval_questions_revised import eval_questions_dict, out_of_scope_dict
 from data.categories_dict import categories_dict
 import json
@@ -16,13 +16,13 @@ import json
 
 def parse_through_json_file(json_file_path):
     """
-    Reads through a json file
+    Reads through the JSON file and outputs it in a readable and editable format
 
     Input:
-    file path: str
+    File Path: (str)
 
     Output:
-    data: dict
+    Data: (dict)
     """
     with open(f"{json_file_path}", "r") as f:
         return json.load(f)
@@ -30,14 +30,13 @@ def parse_through_json_file(json_file_path):
 
 def load_into_document_class(data_dict):
     """
-    loads the dictionary and converts the seperate values for each key into a document in preparation for the embedding model
+    Loads the dictionary and converts the seperate values for each key into a document in preparation for the embedding model
 
     Input:
-    data_dict: dict
-    categories_dict: dict
+    Data Dictionary: dict
 
     Output:
-    documents: List[Document]
+    Documents: List[Document] (in Ollama formatting)
     """
     documents = [
         Document(page_content=values, metadata={"id":key})
@@ -48,67 +47,83 @@ def load_into_document_class(data_dict):
 
 
 
-def load_data_to_embed_model(data, embedding_model=OllamaEmbeddings(model="nomic-embed-text", base_url="http://localhost:11434")):
+def vectoriser(data, embedding_model=OllamaEmbeddings(model="nomic-embed-text", base_url="http://localhost:11434")):
     """
-    returns the vector conversion of the documents
+    Returns the vectorised version of any data
 
     Input: 
-    documents : List[Document]
+    data : List[Document]
+    embedding_model : an embeddings object (default: model="nomic-embed-text" powered by Ollama)
 
     Output:
-    List of the vectors: list
+    FAISS : vector store containing the embedded documents
     """
-    vector_db = FAISS.from_documents(data, embedding_model)
-    return vector_db
+    vectorised_data = FAISS.from_documents(data, embedding_model)
+    return vectorised_data
 
+def run_a_singular_query(query, retriever, prompt, llm):
+    """
+    Returns a SINGLE query response. Made to get a basic input --> output from the baseline RAG Model
 
+    Input:
+    Query: (str)
+    Retriever: LangChain retriver (contains the top_k function)
+    Prompt: ChatPromptTemplate (contains the main prompt given to the LLM)
+    LLM: LangChain chat model 
 
-if __name__ == "__main__":
+    Output:
+    Print statements of the following:
+        Query
+        Retrieved Chunks
+        Generated Response
+    """
+    print(f"Query: {query}")
 
-    # can hyper parameter tune the temperature value
-    llm = ChatOllama(model="llama3", temperature=0)
-
-    data_dict = parse_through_json_file("data/data_dict.json")
-
-    documents = load_into_document_class(data_dict)
-
-    # consider saving this locally (writing up to a diff file)
-    vector_db = load_data_to_embed_model(documents)
-
-    retriever = vector_db.as_retriever(
-    search_type="similarity",
-
-    # hyper-parameter k tuning 
-    search_kwargs={"k": 3}
-    )
-
-    query = "What isolation steps are required before starting installation?"
-    print(f"Querying vector database: '{query}'\n")
+    # run the top_k algorithim on the query and generate the most similar chunks of data
     retrieved_chunks = retriever.invoke(query)
 
     print(f"Total chunks retrieved: {len(retrieved_chunks)}")
-    for idx, doc in enumerate(retrieved_chunks, start=1):
-        print(f"--- Top Match #{idx} ---")
+
+    for idx, doc in enumerate(retrieved_chunks):
+        print(f"========= Top Match #{idx} =========")
         print(f"Content: {doc.page_content}")
         print(f"Metadata: {doc.metadata}\n")
-
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", "You are a helpful assistant. Answer the user's question using ONLY the provided context. If you do not know the answer based on the context, say 'I cannot find that in the documents.'\n\nContext:\n{context}"),
-        ("human", "{input}"),
-    ])
+        print(f"====================================")
 
     qa_chain = create_stuff_documents_chain(llm, prompt)
 
-    print("\n--- Llama 3 Generating Answer ---")
     response = qa_chain.invoke({
-        "input": query,
-        "context": retrieved_chunks
-    })
+            "input": query,
+            "context": retrieved_chunks
+        })
 
+    print(f"========== Generated Anwser ==========")
     print(response)
+    print(f"======================================")
 
 
+def main():
+    # main variables that can be tuned
+    llm = ChatOllama(model="llama3", temperature=0)
+
+    prompt = ChatPromptTemplate.from_messages([
+            ("system", "You are a helpful assistant. Answer the user's question using ONLY the provided context. If you do not know the answer based on the context, say 'Unfortunately my database does not cover this data'\n\nContext:\n{context}"),
+            ("human", "{input}"),
+    ])
+
+    query = "Who should be accredited for STCs?"
     
 
+    # start the main function
+    data_dict = parse_through_json_file("data/data_dict.json")
+    documents = load_into_document_class(data_dict)
+    vectorised_data = vectoriser(documents)
 
+    # main area for hyper-parameter tuning
+    retriever = vectorised_data.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
+    # run a SINGULAR query
+    run_a_singular_query(query, retriever, prompt, llm)
+
+if __name__ == "__main__":
+     main()
