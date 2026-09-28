@@ -61,7 +61,7 @@ def vectoriser(data, embedding_model=OllamaEmbeddings(model="nomic-embed-text", 
     vectorised_data = FAISS.from_documents(data, embedding_model)
     return vectorised_data
 
-def run_a_singular_query(query, retriever, prompt, llm):
+def run_a_singular_query(query, retriever, prompt, llm, testing = False):
     """
     Returns a SINGLE query response. Made to get a basic input --> output from the baseline RAG Model
 
@@ -85,10 +85,14 @@ def run_a_singular_query(query, retriever, prompt, llm):
     print(f"Total chunks retrieved: {len(retrieved_chunks)}\n")
 
     for idx, doc in enumerate(retrieved_chunks):
-        print(f"========= Top Match #{idx} =========")
-        print(f"Content: {doc.page_content}")
-        print(f"Metadata: {doc.metadata}\n")
-        print(f"====================================")
+        if testing:
+            #Adding a way we can export retreived topics - Luke George
+            yield doc.metadata
+        else:
+            print(f"========= Top Match #{idx} =========")
+            print(f"Content: {doc.page_content}")
+            print(f"Metadata: {doc.metadata}\n")
+            print(f"====================================")
 
     qa_chain = create_stuff_documents_chain(llm, prompt)
 
@@ -96,11 +100,13 @@ def run_a_singular_query(query, retriever, prompt, llm):
             "input": query,
             "context": retrieved_chunks
         })
-
-    print(f"========== Generated Anwser ==========")
-    print(response)
-    print(f"======================================")
-
+    if testing:
+        # Also returning the response too.
+        yield response
+    else:
+        print(f"========== Generated Anwser ==========")
+        print(response)
+        print(f"======================================")
 
 def main():
     # main variables that can be tuned
