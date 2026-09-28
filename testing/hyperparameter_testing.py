@@ -5,7 +5,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 import RAG
 
-from data.eval_questions_revised import eval_questions_dict
+from data.eval_questions_dataset import eval_questions_dict
 
 from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate

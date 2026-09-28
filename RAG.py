@@ -9,7 +9,7 @@ from langchain_classic.chains.combine_documents import create_stuff_documents_ch
 
 
 # importing data + functions from other python files
-from data.eval_questions_revised import eval_questions_dict, out_of_scope_dict
+from data.eval_questions_dataset import eval_questions_dict, out_of_scope_dict
 from data.categories_dict import categories_dict
 import json
 

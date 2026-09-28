@@ -1,0 +1,45 @@
+class_id,type,question_id,question
+c1,known,c1k1,When can I apply to mid-scale solar installation in 2026?
+c1,known,c1k2,To install a wind turbine system what is the total annual electricity output requirement?
+c1,known,c1k3,What isolation steps are required before starting installation?
+c1,known,c1k4,What separation distance must be maintained from overhead powerlines during installation work?
+c1,inferred,c1i1,Can my solar battery be created within 24 months of the installation?
+c1,inferred,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?"
+c1,inferred,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?
+c2,known,c2k1,What are the maximum daily of installations I can do to claim STCs?
+c2,known,c2k2,Can a stackable battery system be eligible for STCs?
+c2,known,c2k3,Do I need to have evidence to get an STC?
+c2,known,c2k4,"If a household completely replaces its existing rooftop solar system, what conditions must the new system meet to be eligible for STCs?"
+c2,known,c2k5,Under what circumstances would a STC claim fail
+c2,inferred,c2i1,Who should be accredited for STCs?
+c2,inferred,c2i2,What should my photos look like for evidence to get STCs?
+c2,inferred,c2i3,What types of small scale renewable energy systems are eligible under the SRES?
+c2,inferred,c2i4,What capacity and annual electricity output limits apply to wind and hydro systems for STC eligibility?
+c2,inferred,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?"
+c2,inferred,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?
+c3,known,c3k1,What are the current Australian standards for inverters?
+c3,known,c3k2,Would inverters after installation need a connection to a meter or main grid
+c3,known,c3k3,Does Force 5S (AS4777-2 2020) come under the list of approved inverters by Clean Energy Council
+c3,known,c3k4,What is the requirements for the isolation of the inverter inputs when PV is the energy source?
+c3,inferred,c3i1,Can I apply for a new inverter to my existing system if my inverter is not on the CEC approved products list
+c4,known,c4k1,What requirements must products meet to connect to Australian electricity networks using CSIP-AUS?
+c4,known,c4k2,What tests must be performed before energising new electrical equipment/work?
+c4,known,c4k3,How do you verify equipment safety compliance prior to setup?
+c4,known,c4k4,How often must portable electrical equipment on a worksite be tested?
+c4,inferred,c4i1,What are the necessary steps regarding Installer on-site verification photos
+c5,known,c5k1,Which standard governs general electrical installations in Australia?
+c5,known,c5k2,"Who accredits solar installers in Australia, CEC or SAA?"
+c5,known,c5k3,What Australian Standard governs the installation of electrical equipment in hazardous areas?
+c5,known,c5k4,Who is legally authorised to issue a Certificate of Electrical Safety?
+c6,known,c6k1,What is the renewable energy target?
+c6,known,c6k2,How does the RET work?
+c6,known,c6k3,What is the difference between a small scale system and a power station under the Renewable Energy Target?
+c6,inferred,c6i1,What requirements must a power station meet under the Renewable Energy Target?
+c7,known,c7k1,What are Postcode zones?
+c7,known,c7k2,What does each postcode zone represent?
+c7,known,c7k3,Is usage of the new AS/NZS 5033:2021 before the commencement date practical/viable/allowed?
+c7,inferred,c7i1,How do you define a small-scale system?
+c8,known,c8k1,What deeming period applies to a solar PV system installed in 2024?
+c8,known,c8k2,Can I apply to a rebate to switch to solar?
+c8,known,c8k3,Under what circumstances can multiple installers work on the same solar installation?
+c8,inferred,c8i1,What do I need to keep in mind when replacing my original rooftop solar system

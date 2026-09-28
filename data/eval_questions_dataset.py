@@ -320,3 +320,24 @@ out_of_scope_dict = {
         "o5": "What is the best solar battery for my home?",
         "o6": "How much money can I save by installing solar panels?"
 }
+
+
+## used this to create the eval_questions.csv 
+
+
+# import pandas as pd
+
+# flattened_rows = []
+
+
+# for class_id, types_dict in eval_questions_dict.items():
+#     for q_type, questions_list in types_dict.items():
+#         for q_item in questions_list:
+#             flattened_rows.append({
+#                 "question_id": q_item.get("id"),
+#                 "question": q_item.get("question")
+#             })
+
+
+# df = pd.DataFrame(flattened_rows)
+# df.to_csv("data/eval_questions.csv", index=False)        
