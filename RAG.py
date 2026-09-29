@@ -159,44 +159,15 @@ def main():
     # main area for hyper-parameter tuning
     retriever = vectorised_data.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
-    # # run a SINGULAR query
-    # run_a_singular_query(query, retriever, prompt, llm)
-
-    """
-    the main idea that I had was the following:
-
-    we already have a working solution that runs the rag pipeline on one singular question. we could open the eval_question.csv file and go through each line
-    and run the query on each of the questions in each line of the csv file. I think I can use the current functions to make this work
-    the problem comes when I have to access the question in the database to drag out the expected anweser and the expected source documents
-
-    so the final_eval_question_results.csv should look like this
-
-    question id, question, expected anwser, expected source dpcuments, actual anwser, retrieved documents
-
-    let me know if this kind of covers the required fields you need for the evaluation framework
-    
-    """
-
-
-# if __name__ == "__main__":
-#     main()
+    # run a SINGULAR query
+    run_a_singular_query(query, retriever, prompt, llm)
 
 
 
-# data_contents = []
 
-# with open("data/eval_questions.csv", mode="r", encoding="utf-8") as file:
-#     reader = csv.DictReader(file)
-
-#     for row in reader:
-#         print(row)
+if __name__ == "__main__":
+    main()
 
 
-import os
 
-file_path = "data/eval_questions.csv"
 
-if not os.path.exists(file_path):
-    print("cant find the file")
-else:
-    print("i can find it youre just a dumbass")
