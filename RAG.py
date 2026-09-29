@@ -28,19 +28,6 @@ def parse_through_json_file(json_file_path):
         return json.load(f)
 
 
-# def parse_through_csv_file(csv_file_path):
-#     data_contents = []
-
-#     with open(csv_file_path, mode="r", newline="", encoding="utf-8") as file:
-#         reader = csv.reader(file)
-
-#         for row in reader:
-#             data_contents.append(row)
-
-#     return data_contents
-
-# print(parse_through_csv_file("data/eval_questions.csv"))
-
 
 def load_into_document_class(data_dict):
     """
