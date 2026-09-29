@@ -325,19 +325,22 @@ out_of_scope_dict = {
 ## used this to create the eval_questions.csv 
 
 
-# import pandas as pd
+import pandas as pd
 
-# flattened_rows = []
-
-
-# for class_id, types_dict in eval_questions_dict.items():
-#     for q_type, questions_list in types_dict.items():
-#         for q_item in questions_list:
-#             flattened_rows.append({
-#                 "question_id": q_item.get("id"),
-#                 "question": q_item.get("question")
-#             })
+flattened_rows = []
 
 
-# df = pd.DataFrame(flattened_rows)
-# df.to_csv("data/eval_questions.csv", index=False)        
+for class_id, types_dict in eval_questions_dict.items():
+    for q_type, questions_list in types_dict.items():
+        for q_item in questions_list:
+            source_id = []
+            flattened_rows.append({
+                "question_id": q_item.get("id"),
+                "question": q_item.get("question"),
+                "expected_sources" : q_item.get("source_id"),
+                "expected_anwser": q_item.get("expected_answer")
+            })
+
+
+df = pd.DataFrame(flattened_rows)
+df.to_csv("data/eval_questions.csv", index=False)        

@@ -11,6 +11,7 @@ from langchain_classic.chains.combine_documents import create_stuff_documents_ch
 from data.eval_questions_dataset import eval_questions_dict, out_of_scope_dict
 from data.categories_dict import categories_dict
 import json
+import csv
 
 
 def parse_through_json_file(json_file_path):
@@ -25,6 +26,20 @@ def parse_through_json_file(json_file_path):
     """
     with open(json_file_path, "r") as f:
         return json.load(f)
+
+
+# def parse_through_csv_file(csv_file_path):
+#     data_contents = []
+
+#     with open(csv_file_path, mode="r", newline="", encoding="utf-8") as file:
+#         reader = csv.reader(file)
+
+#         for row in reader:
+#             data_contents.append(row)
+
+#     return data_contents
+
+# print(parse_through_csv_file("data/eval_questions.csv"))
 
 
 def load_into_document_class(data_dict):
@@ -123,6 +138,7 @@ def run_a_singular_query(query, retriever, prompt, llm):
     return response
 
 
+
 def main():
     # main variables that can be tuned
     embedding_model = OllamaEmbeddings(model="nomic-embed-text", base_url="http://localhost:11434")
@@ -143,9 +159,44 @@ def main():
     # main area for hyper-parameter tuning
     retriever = vectorised_data.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
-    # run a SINGULAR query
-    run_a_singular_query(query, retriever, prompt, llm)
+    # # run a SINGULAR query
+    # run_a_singular_query(query, retriever, prompt, llm)
+
+    """
+    the main idea that I had was the following:
+
+    we already have a working solution that runs the rag pipeline on one singular question. we could open the eval_question.csv file and go through each line
+    and run the query on each of the questions in each line of the csv file. I think I can use the current functions to make this work
+    the problem comes when I have to access the question in the database to drag out the expected anweser and the expected source documents
+
+    so the final_eval_question_results.csv should look like this
+
+    question id, question, expected anwser, expected source dpcuments, actual anwser, retrieved documents
+
+    let me know if this kind of covers the required fields you need for the evaluation framework
+    
+    """
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
+
+
+
+# data_contents = []
+
+# with open("data/eval_questions.csv", mode="r", encoding="utf-8") as file:
+#     reader = csv.DictReader(file)
+
+#     for row in reader:
+#         print(row)
+
+
+import os
+
+file_path = "data/eval_questions.csv"
+
+if not os.path.exists(file_path):
+    print("cant find the file")
+else:
+    print("i can find it youre just a dumbass")
