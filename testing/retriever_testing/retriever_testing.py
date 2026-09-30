@@ -13,6 +13,10 @@ import time
 import ranx
 import pandas as pd
 
+
+# NOTE: This code takes about 35 minutes to run, so don't re-run it unless you actually want to.
+
+
 # I can read this using this, but can others?
 eval_questions = pd.read_csv("~/CSDS-WIL-Group-17-RAG/testing/retriever_testing/eval_questions.csv")
 

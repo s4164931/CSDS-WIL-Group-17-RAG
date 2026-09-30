@@ -1,6 +1,4 @@
 # importing the models and packages
-
-
 from langchain_core.documents import Document
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_ollama import OllamaEmbeddings, ChatOllama
@@ -130,13 +128,11 @@ def run_a_singular_query(query, retriever, prompt, llm, testing = False):
    else:
        response = generate_answer(query, retrieved_chunks, prompt, llm)
 
-
        print("========== Generated Answer ==========")
        print(response)
        print("======================================")
 
-
-       return response
+       yield response
 
 def main():
    # main variables that can be tuned
@@ -165,8 +161,8 @@ def main():
 
    # run a SINGULAR query
    word = run_a_singular_query(query, retriever, prompt, llm, testing = False)
-   for fr in word:
-      print(fr)
+   for output in word:
+      pass
 
 if __name__ == "__main__":
    main()
