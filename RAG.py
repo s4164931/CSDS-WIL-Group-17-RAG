@@ -161,6 +161,8 @@ def main():
 
    # run a SINGULAR query
    word = run_a_singular_query(query, retriever, prompt, llm, testing = False)
+
+   # IDK why this is needed, but without it, the terminal code won't print.
    for output in word:
       pass
 

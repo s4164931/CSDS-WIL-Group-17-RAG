@@ -54,3 +54,7 @@ if question:
 
     with st.chat_message("assistant"):
         st.write(answer)
+
+# If you get a bug like "lang_chain module doesn't exist" when running the website, use this code on your terminal below.
+# change '/users/lukegeorge' to your directory to the CSDS folder.
+# ./.venv/bin/python -m streamlit run /Users/lukegeorge/CSDS-WIL-Group-17-RAG/webserver/app.py
