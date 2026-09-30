@@ -1,66 +1,192 @@
-label,temperature,question,expected,answer,effective,faithful,correct
-T=0,0,When can I apply to mid-scale solar installation in 2026?,You can apply for mid-scale solar installation from 1st of October 2026. Applications will be accepted from this date onwards.,"According to the context, applications for mid-scale solar installations are expected to open in mid to late November 2026.",True,True,False
-T=0,0,To install a wind turbine system what is the total annual electricity output requirement?,The total annual electricity output requirement to install a wind turbine system is 25 MWh.,"According to the provided context, a wind turbine system must have a total annual electricity output less than 25 MWh to be eligible to earn Small-scale Technology Certificates (STCs).",True,True,False
-T=0,0,What isolation steps are required before starting installation?,"Shut down and isolate all energy sources, lock out and tag out (LOTO), then test to verify zero voltage/energy before starting work.","According to the provided context, the isolation steps required before starting installation are:
+label,temperature,repeat,question_id,question,expected,answer,effective,faithful,correct
+T=0,0,0,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","According to the provided context, a solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation.",True,True,True
+T=0,0,0,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, the answer to the user's question is:
 
-1. Shutting down all energy sources
-2. Locking and tagging all energy sources
-3. Testing to prove a zero-energy state
+The upgrade will be eligible if: the total system capacity after the upgrade has a rating of no more than 100 kW, the new panels and new inverter are on the CEC approved products list, the new inverter has sufficient capacity, all components meet the current relevant standards, the system meets all relevant state and territory laws, including electrical safety regulations and the existing panels are not included in the new claim for STCs.",True,True,True
+T=0,0,0,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data,False,False,False
+T=0,0,0,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, a solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation.",True,True,True
+T=0,0,0,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"According to the provided context, STCs can only be created for eligible small-scale renewable energy systems if the system is created within 12 months of installation.",True,True,True
+T=0.2,0.2,0,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","According to the provided context, the answer to the user's question is:
 
-These steps are necessary to ensure a safe isolation before starting the installation.",True,True,True
-T=0,0,What separation distance must be maintained from overhead powerlines during installation work?,"A minimum separation distance of 3 metres must be maintained from overhead powerlines when using a registered spotter, for distribution lines up to 132 kV.","According to the provided context, the standard baseline separation distance from overhead powerlines during work is 3 metres for distribution lines up to 132kV when using a registered spotter.",True,True,True
-T=0,0,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months",Unfortunately my database does not cover this data,False,False,False
-T=0,0,What is the current price of an STC?,(out-of-scope),Unfortunately my database does not cover this data.,,,
-T=0,0,How much does it cost to install a solar battery?,(out-of-scope),Unfortunately my database does not cover this data.,,,
-T=0,0,What brand of solar panel is the most reliable?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context only discusses the requirements for creating Small-scale Technology Certificates (STCs) for solar PV systems, wind or hydro systems, and does not provide information on the reliability of specific solar panel brands.",,,
-T=0,0,How much electricity will my solar system generate each year?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context does not mention the specific details of the solar system's capacity or performance, which would be necessary to estimate the annual electricity generation.",,,
-T=0,0,What is the best solar battery for my home?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context only discusses the requirements for creating Small-scale Technology Certificates (STCs) and the eligibility of solar systems, but it does not provide information on specific solar battery products or recommendations.",,,
-T=0.3,0.3,When can I apply to mid-scale solar installation in 2026?,You can apply for mid-scale solar installation from 1st of October 2026. Applications will be accepted from this date onwards.,"According to the provided context, applications for mid-scale solar installations are expected to open in mid to late November 2026.",True,True,False
-T=0.3,0.3,To install a wind turbine system what is the total annual electricity output requirement?,The total annual electricity output requirement to install a wind turbine system is 25 MWh.,"According to the provided context, to be eligible to earn Small-scale Technology Certificates (STCs), a wind turbine system must have a total annual electricity output less than 25 MWh.",True,True,True
-T=0.3,0.3,What isolation steps are required before starting installation?,"Shut down and isolate all energy sources, lock out and tag out (LOTO), then test to verify zero voltage/energy before starting work.","According to the provided context, the isolation steps required before starting installation are:
+A solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation.",True,True,True
+T=0.2,0.2,0,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, the answer to the user's question is:
 
-1. Shutting down all energy sources
-2. Locking and tagging all energy sources
-3. Testing to prove a zero-energy state
+The upgrade will be eligible if: the total system capacity after the upgrade has a rating of no more than 100 kW, the new panels and new inverter are on the CEC approved products list, the new inverter has sufficient capacity, all components meet the current relevant standards, the system meets all relevant state and territory laws, including electrical safety regulations and the existing panels are not included in the new claim for STCs.",True,True,True
+T=0.2,0.2,0,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data.,False,False,False
+T=0.2,0.2,0,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, the answer to the user's question is:
 
-These steps are necessary to ensure a safe isolation before starting the installation.",True,True,True
-T=0.3,0.3,What separation distance must be maintained from overhead powerlines during installation work?,"A minimum separation distance of 3 metres must be maintained from overhead powerlines when using a registered spotter, for distribution lines up to 132 kV.","According to the provided context, the standard baseline separation distance from overhead powerlines during work is 3 metres for distribution lines up to 132kV when using a registered spotter.",True,True,True
-T=0.3,0.3,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months",Unfortunately my database does not cover this data,False,False,False
-T=0.3,0.3,What is the current price of an STC?,(out-of-scope),Unfortunately my database does not cover this data.,,,
-T=0.3,0.3,How much does it cost to install a solar battery?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context only mentions rebates and interest-free loans for installing solar panels and solar hot water systems, but does not provide information on the cost of installing a solar battery.",,,
-T=0.3,0.3,What brand of solar panel is the most reliable?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context only discusses the requirements for creating Small-scale Technology Certificates (STCs) for solar PV systems, and does not include information on the reliability of specific solar panel brands.",,,
-T=0.3,0.3,How much electricity will my solar system generate each year?,(out-of-scope),Unfortunately my database does not cover this data. The provided context does not mention specific details about the electricity generation capacity of solar systems. It only provides information about the regulations and requirements for small-scale renewable energy systems.,,,
-T=0.3,0.3,What is the best solar battery for my home?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context only discusses the requirements for solar PV, solar battery, wind or hydro systems, and does not provide information on specific solar battery models or recommendations.",,,
-T=0.7,0.7,When can I apply to mid-scale solar installation in 2026?,You can apply for mid-scale solar installation from 1st of October 2026. Applications will be accepted from this date onwards.,"According to the provided context, applications are expected to open in mid to late November 2026.",True,True,False
-T=0.7,0.7,To install a wind turbine system what is the total annual electricity output requirement?,The total annual electricity output requirement to install a wind turbine system is 25 MWh.,"To be eligible to earn Small-scale Technology Certificates (STCs), your wind turbine system must have a total annual electricity output less than 25 MWh.",True,True,True
-T=0.7,0.7,What isolation steps are required before starting installation?,"Shut down and isolate all energy sources, lock out and tag out (LOTO), then test to verify zero voltage/energy before starting work.","According to the provided context, the isolation steps required before starting installation are:
+A solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation.
 
-1. Shutting down all energy sources
-2. Locking all energy sources
-3. Tagging all energy sources
-4. Testing to prove a zero-energy state
+Unfortunately my database does not cover this data",False,True,True
+T=0.2,0.2,0,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"According to the provided context, the answer to your question is:
 
-These steps are necessary to ensure a safe isolation before starting the installation.",True,True,True
-T=0.7,0.7,What separation distance must be maintained from overhead powerlines during installation work?,"A minimum separation distance of 3 metres must be maintained from overhead powerlines when using a registered spotter, for distribution lines up to 132 kV.","The required separation distance from overhead powerlines during work depends heavily on the voltage, equipment used, and local regulations, with a standard baseline of 3 metres for distribution lines up to 132kV when using a registered spotter.",True,True,True
-T=0.7,0.7,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months",Unfortunately my database does not cover this data,False,False,False
-T=0.7,0.7,What is the current price of an STC?,(out-of-scope),Unfortunately my database does not cover this data.,,,
-T=0.7,0.7,How much does it cost to install a solar battery?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context only discusses the rules and regulations for installing solar PV systems and solar batteries, but it does not provide information on the cost of installing a solar battery.",,,
-T=0.7,0.7,What brand of solar panel is the most reliable?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context only discusses specific requirements and regulations for solar systems, but does not provide information on the reliability of specific brands of solar panels.",,,
-T=0.7,0.7,How much electricity will my solar system generate each year?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context only mentions annual electricity output limits for wind and hydro systems, but it does not provide information on the actual electricity generation of solar systems.",,,
-T=0.7,0.7,What is the best solar battery for my home?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context does not mention specific solar battery recommendations or ratings. However, it does mention that the solar battery must meet Australian and New Zealand standards and be listed on the Clean Energy Council (CEC) list of approved components. It's best to consult with a professional solar installer or conduct your own research to find the best solar battery for your specific needs and home.",,,
-T=1.0,1.0,When can I apply to mid-scale solar installation in 2026?,You can apply for mid-scale solar installation from 1st of October 2026. Applications will be accepted from this date onwards.,Applications for mid-scale solar installations under the Small-scale Renewable Energy Scheme are expected to open in mid to late November 2026.,True,True,True
-T=1.0,1.0,To install a wind turbine system what is the total annual electricity output requirement?,The total annual electricity output requirement to install a wind turbine system is 25 MWh.,"According to the context, to be eligible to earn STCs, your wind turbine system must have a capacity less than 10 kW and a total annual electricity output less than 25 MWh.",True,True,True
-T=1.0,1.0,What isolation steps are required before starting installation?,"Shut down and isolate all energy sources, lock out and tag out (LOTO), then test to verify zero voltage/energy before starting work.","According to the context, the isolation steps required before starting installation are:
+STCs can only be claimed if certificates are created within 12 months of installation.",True,True,True
+T=0.2,0.2,1,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","According to the provided context, a solar PV, solar battery, wind or hydro system must be designed and installed by a Solar Accreditation Australia (SAA) accredited designer and installer appropriately accredited for the installation type.",True,True,False
+T=0.2,0.2,1,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, the answer to the user's question is:
 
-1. Shutting down all energy sources
-2. Locking and tagging all energy sources
-3. Testing to prove a zero-energy state
+The upgrade will be eligible if: the total system capacity after the upgrade has a rating of no more than 100 kW, the new panels and new inverter are on the CEC approved products list, the new inverter has sufficient capacity, all components meet the current relevant standards, the system meets all relevant state and territory laws, including electrical safety regulations and the existing panels are not included in the new claim for STCs.",True,True,True
+T=0.2,0.2,1,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data,False,False,False
+T=0.2,0.2,1,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, the answer to the question is:
 
-These steps ensure that all energy sources are safely shut off and proved to be zero-energy before starting the installation.",True,True,True
-T=1.0,1.0,What separation distance must be maintained from overhead powerlines during installation work?,"A minimum separation distance of 3 metres must be maintained from overhead powerlines when using a registered spotter, for distribution lines up to 132 kV.","According to the provided context, the standard baseline separation distance from overhead powerlines during work is 3 metres for distribution lines up to 132kV when using a registered spotter.",True,True,True
-T=1.0,1.0,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","According to the context, a solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation, not 24 months. Unfortunately, this means that your solar battery cannot be created within 24 months of the installation.",True,False,True
-T=1.0,1.0,What is the current price of an STC?,(out-of-scope),Unfortunately my database does not cover this data,,,
-T=1.0,1.0,How much does it cost to install a solar battery?,(out-of-scope),Unfortunately my database does not cover this data,,,
-T=1.0,1.0,What brand of solar panel is the most reliable?,(out-of-scope),Unfortunately my database does not cover this data,,,
-T=1.0,1.0,How much electricity will my solar system generate each year?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context does not include information about the capacity or output of solar systems, so I am unable to provide a specific answer to your question.",,,
-T=1.0,1.0,What is the best solar battery for my home?,(out-of-scope),"Unfortunately my database does not cover this data. The provided context only discusses the requirements for creating Small-scale Technology Certificates (STCs) for solar PV, solar battery, wind, or hydro systems, as well as rebates and interest-free loans offered by Solar Victoria. It does not provide information on the best solar battery for your home.",,,
+A solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation.",True,True,True
+T=0.2,0.2,1,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"How long after installation can STCs be created?
+
+Answer: STCs can be created within 12 months of installation.",True,True,True
+T=0.2,0.2,2,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","According to the provided context, the answer to the user's question is:
+
+A solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation.",True,True,True
+T=0.2,0.2,2,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, the answer to the user's question is:
+
+The upgrade will be eligible if: the total system capacity after the upgrade has a rating of no more than 100 kW, the new panels and new inverter are on the CEC approved products list, the new inverter has sufficient capacity, all components meet the current relevant standards, the system meets all relevant state and territory laws, including electrical safety regulations and the existing panels are not included in the new claim for STCs.",True,True,True
+T=0.2,0.2,2,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data,False,False,False
+T=0.2,0.2,2,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, a solar PV system must have STCs created within 12 months of the installation.",True,True,True
+T=0.2,0.2,2,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"According to the provided context, STCs can only be created for eligible small-scale renewable energy systems if the system is created within 12 months of installation.",True,True,True
+T=0.5,0.5,0,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","According to the provided context, the answer to your question is:
+
+A solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation.",True,True,True
+T=0.5,0.5,0,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, it seems that the key consideration for the upgrade to be eligible is that the total system capacity after the upgrade has a rating of no more than 100 kW.",True,True,True
+T=0.5,0.5,0,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data.,False,False,False
+T=0.5,0.5,0,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, the answer to your question is: The solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation.",True,True,True
+T=0.5,0.5,0,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"According to the provided context, STCs can only be created for eligible small-scale renewable energy systems within 12 months of installation.",True,True,True
+T=0.5,0.5,1,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","Based on the provided context, I can answer your question.
+
+What is the requirement for creating STCs (Small-scale Technology Certificates) for a solar PV, solar battery, wind or hydro system?
+
+Answer: A solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation.",True,True,True
+T=0.5,0.5,1,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, the answer to the user's question is:
+
+The upgrade will be eligible for STCs if the new inverter has sufficient capacity to accommodate the combined output of the existing panels and the new panels, and the total system capacity after the upgrade has a rating of no more than 100 kW.",True,True,False
+T=0.5,0.5,1,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.","I can help you with that!
+
+Unfortunately my database does not cover this data",False,False,False
+T=0.5,0.5,1,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","Based on the provided context, the answer to the user's question is:
+
+A solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation, have its panels, batteries or inverters listed on the Clean Energy Council (CEC) list of approved components, meet Australian and New Zealand standard, be designed and installed by a Solar Accreditation Australia (SAA) accredited designer and installer appropriately accredited for the installation type, meet SAA design and install guidelines, comply with all local, state, territory and federal requirements, including electrical safety, be classified as small-scale.",True,True,True
+T=0.5,0.5,1,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"According to the provided context, STCs can be created for eligible small-scale renewable energy systems, including solar PV systems, if the system meets the relevant eligibility requirements.",True,True,False
+T=0.5,0.5,2,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","According to the provided context, the answer to your question is:
+
+A solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation...",True,True,True
+T=0.5,0.5,2,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, it is possible to connect both the existing panels and the new panels to the new inverter, as long as the total system capacity after the upgrade has a rating of no more than 100 kW, the new panels and new inverter are on the CEC approved products list, the new inverter has sufficient capacity, all components meet the current relevant standards, the system meets all relevant state and territory laws, including electrical safety regulations, and the existing panels are not included in the new claim for STCs.",True,True,True
+T=0.5,0.5,2,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data.,False,False,False
+T=0.5,0.5,2,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, the answer to your question is:
+
+A solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation...",True,True,True
+T=0.5,0.5,2,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"According to the provided context, the answer to your question is:
+
+STCs can only be claimed if certificates are created within 12 months of installation.",True,True,True
+T=0.7,0.7,0,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","According to the provided context, a solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation.",True,True,True
+T=0.7,0.7,0,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, the answer to the user's question is:
+
+Yes, the householder can connect both the existing panels and the new panels to the new inverter, as long as the total system capacity after the upgrade has a rating of no more than 100 kW, the new panels and new inverter are on the CEC approved products list, the new inverter has sufficient capacity, all components meet the current relevant standards, the system meets all relevant state and territory laws, including electrical safety regulations, and the existing panels are not included in the new claim for STCs.",True,True,True
+T=0.7,0.7,0,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data,False,False,False
+T=0.7,0.7,0,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, a solar PV, solar battery, wind or hydro system must be designed and installed by a Solar Accreditation Australia (SAA) accredited designer and installer appropriately accredited for the installation type.",True,True,True
+T=0.7,0.7,0,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"According to the context, yes, STCs can only be created within 12 months of installation.",True,True,True
+T=0.7,0.7,1,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","According to the provided context, the answer to the question is: The system must be designed and installed by a Solar Accreditation Australia (SAA) accredited designer and installer appropriately accredited for the installation type.",True,True,False
+T=0.7,0.7,1,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, the key requirement for the upgrade to be eligible is that the total system capacity after the upgrade has a rating of no more than 100 kW.",True,True,True
+T=0.7,0.7,1,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",I don't have enough information to answer your question. Unfortunately my database does not cover this data.,False,False,False
+T=0.7,0.7,1,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, a solar PV system must have STCs (Small-scale Technology Certificates) created within 12 months of the installation.",True,True,True
+T=0.7,0.7,1,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"According to the provided context, STCs can be created for eligible small-scale renewable energy systems, including solar PV systems, if the system meets the relevant eligibility requirements, including:
+
+* System capacity limits
+* Approved components (listed on the Clean Energy Council's approved components list)
+* Australian and New Zealand standards
+* Installation by appropriately accredited personnel
+
+Additionally, the STCs must be created within 12 months of installation.",True,True,True
+T=0.7,0.7,2,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","What can I help you with?
+
+According to the provided context, the answer to your question is: The system must be designed and installed by a Solar Accreditation Australia (SAA) accredited designer and installer appropriately accredited for the installation type.",True,True,False
+T=0.7,0.7,2,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","According to the provided context, the key requirements for the upgrade to be eligible are:
+
+1. The combined capacity of the existing system and the new system must not exceed 100 kW.
+2. The new panels and inverter must be on the CEC approved products list.
+3. All components must meet the current relevant standards.
+4. The new inverter must have sufficient capacity.
+5. The system must meet all relevant state and territory laws, including electrical safety regulations.
+6. The existing panels must not be included in the new claim for STCs.
+
+As long as these requirements are met, the upgrade should be eligible.",True,True,True
+T=0.7,0.7,2,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data,False,False,False
+T=0.7,0.7,2,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, the answer to the user's question is:
+
+A solar PV, solar battery, wind or hydro system must have STCs created within **12 months** of the installation.",True,True,True
+T=0.7,0.7,2,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"According to the provided context, STCs can be created for eligible small-scale renewable energy systems, including solar PV systems, only if the system meets certain eligibility requirements, including:
+
+* Being created within 12 months of installation
+* Having relevant panels, batteries or inverters listed on the approved products list
+* Meeting Australian and New Zealand standards
+* Being designed and installed by appropriately accredited SAA personnel
+* Complying with SAA design and installation guidelines
+* Satisfying relevant local/state/territory/federal requirements
+* Being classified as small scale.
+
+Additionally, the panels and inverter must be listed on the Clean Energy Council's approved components list at the time of installation.",True,True,True
+T=1.0,1.0,0,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","According to the provided context, the answer to your question is:
+
+A solar PV, solar battery, wind or hydro system must have STCs created within 12 months of the installation...",True,True,True
+T=1.0,1.0,0,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, the householder's upgrade will be eligible if:
+
+1. The total system capacity after the upgrade has a rating of no more than 100 kW.
+2. The new panels and new inverter are on the CEC approved products list.
+3. The new inverter has sufficient capacity.
+4. All components meet the current relevant standards.
+5. The system meets all relevant state and territory laws, including electrical safety regulations.
+6. The existing panels are not included in the new claim for STCs.
+
+Unfortunately, my database does not cover this specific scenario, and I can only provide general information about the requirements for the Solar Credits scheme.",True,True,True
+T=1.0,1.0,0,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data,False,False,False
+T=1.0,1.0,0,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, a solar PV system must be designed and installed by a Solar Accreditation Australia (SAA) accredited designer and installer appropriately accredited for the installation type.",True,True,True
+T=1.0,1.0,0,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"According to the context, an STC can be created for an eligible small-scale renewable energy system, including a solar PV system, if it meets certain eligibility requirements. To be eligible, the system must:
+
+* Have STCs created within 12 months of installation
+* Have relevant panels, batteries or inverters listed on the approved products list
+* Meet Australian and New Zealand standards
+* Be designed and installed by appropriately accredited SAA personnel
+* Comply with SAA design and installation guidelines
+* Satisfy relevant local/state/territory/federal requirements
+* Be classified as small scale
+
+Please note that the system capacity limit is not specified in the provided context.",True,True,True
+T=1.0,1.0,1,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","What is the timeframe within which a solar PV, solar battery, wind or hydro system must have STCs created?",True,True,False
+T=1.0,1.0,1,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","Based on the provided context, I can help you with that.
+
+To answer your question: Will the existing panels be eligible for STCs (Small-scale Technology Certificates) when connected to the new inverter?
+
+According to the context, STCs have already been claimed for the existing system. Therefore, the existing panels will not be eligible for new STCs when connected to the new inverter.",True,True,True
+T=1.0,1.0,1,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data.,False,False,False
+T=1.0,1.0,1,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, STCs (Small-scale Technology Certificates) must be created within 12 months of the installation.",True,True,True
+T=1.0,1.0,1,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,"Based on the provided context, I can answer the following:
+
+Q: When can STCs be created?
+A: Within 12 months of installation.
+
+Q: What are the requirements for panels and inverter to be eligible for STC creation?
+A: They must be listed on the Clean Energy Council's approved components list at the time of installation.
+
+Unfortunately my database does not cover other questions.",True,True,True
+T=1.0,1.0,2,c1i1,Can my solar battery be created within 24 months of the installation?,"No, the maximum is 12 months","Based on the provided context, the answer to your question is:
+
+What are the requirements for a solar PV, solar battery, wind or hydro system to qualify for STCs?
+
+According to the context, the requirements are:
+
+* The system must have STCs created within 12 months of the installation.
+* The system must have its panels, batteries, or inverters listed on the Clean Energy Council (CEC) list of approved components.
+* The system must meet Australian and New Zealand standard.
+* The system must be designed and installed by a Solar Accreditation Australia (SAA) accredited designer and installer, appropriately accredited for the installation type.
+* The system must meet SAA design and install guidelines.
+* The system must comply with all local, state, territory, and federal requirements, including electrical safety.
+* The system must be classified as small-scale.",True,True,False
+T=1.0,1.0,2,c1i2,"What if my additional new inverter has a rating of 100kW, can I install this into my house?","If the additional new inverter has a rating of 100kW, you cannot add it to an existing system. Adding this will increase the total system capacity 100kw for STC eligibility, which is not allowed. The maximum system capacity for STC eligibility","According to the provided context, the upgrade will be eligible for STCs if:
+
+1. The total system capacity after the upgrade has a rating of no more than 100 kW.
+2. The new panels and new inverter are on the CEC approved products list.
+3. The new inverter has sufficient capacity.
+4. All components meet the current relevant standards.
+5. The system meets all relevant state and territory laws, including electrical safety regulations.
+6. The existing panels are not included in the new claim for STCs.
+
+Since the existing panels are already eligible for STCs, they cannot be included in the new claim.",True,True,True
+T=1.0,1.0,2,c1i3,What are the most vital OH&S regulations when it comes to installing electrical equipment?,"Electrical installation must follow OH&S requirements including risk assessment, safe isolation/lock-out and testing, appropriate electrical testing, and SWMS for high-risk work, in accordance with AS/NZS 3000.",Unfortunately my database does not cover this data,False,False,False
+T=1.0,1.0,2,c1i5,"What conditions must a solar PV, battery, wind or hydro system meet to be eligible for STCs?","The system must have STCs created within 12 months, use approved products, meet Australian/New Zealand standards, be designed and installed by appropriately accredited SAA personnel, follow SAA guidelines, comply with relevant laws and be classified as small-scale.","According to the provided context, the system must be designed and installed by a Solar Accreditation Australia (SAA) accredited designer and installer.",True,True,True
+T=1.0,1.0,2,c1i6,How long after installation do I have to claim STCs (Small-scale Technology Certificate) for a system?,STCs must be created within 12 months of installation,What are the eligibility requirements for Small-scale Technology Certificates (STCs) for solar PV systems?,True,True,False
