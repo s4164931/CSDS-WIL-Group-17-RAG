@@ -6,3 +6,4 @@ faiss-cpu
 ranx
 pandas
 streamlit
+matplotlib
