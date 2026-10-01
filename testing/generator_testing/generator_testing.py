@@ -20,8 +20,8 @@ import ast
 
 CONFIG_CSV = "testing/generator_testing/configuration.csv"
 DATA_JSON_PATH = "data/data_dict.json"
-TEMPERATURE_VALUES = [0, 0.2, 0.5, 0.7, 1.0]
-LIMIT = 5 # number of questions to test
+TEMPERATURE_VALUES = [0.7, 1.0] # testing just these two as the others have already been parsed through overnight
+LIMIT = None # number of questions to test
 REPEATS = 3 # how many times to repeat each temperature (other than 0)
 RESULTS_DIR = "testing/results"
 os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -48,7 +48,7 @@ for qid, row in seen.items():
 if LIMIT:
     questions = questions[:LIMIT]
 
-ood_questions = []
+ood_questions = list(out_of_scope_dict.values())[:LIMIT] if LIMIT else list(out_of_scope_dict.values())
 
 print(f"Testing {len(questions)} in-scope questions" + (f" + {len(ood_questions)} out-of-scope questions" if ood_questions else ""))
 
@@ -156,6 +156,7 @@ def judge_yes(chain, inputs):
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant. Answer the user's question using ONLY the provided context. If you do not know the answer based on the context, say 'Unfortunately my database does not cover this data'\n\nContext:\n{context}"),
+    ("human", "{input}"),
 ])
 
 def score_one_answer(question, expected, answer, context_text):
@@ -230,9 +231,8 @@ SUMMARY_FIELDS = ["label", "temperature", "repeats", "effectiveness", "effective
 answer_log_path = f"{RESULTS_DIR}/generator_testing_answers.csv"
 qualitative = []
 
-with open(answer_log_path, "w", newline="", encoding="utf-8") as f:
+with open(answer_log_path, "a", newline="", encoding="utf-8") as f:
     log = csv.writer(f)
-    log.writerow(["label", "temperature", "repeat", "question_id", "question", "expected", "answer", "effective", "faithful", "correct"])
 
     # test: temperature
 
@@ -250,7 +250,7 @@ with open(answer_log_path, "w", newline="", encoding="utf-8") as f:
         t_results.append(average_repeats(runs))
 
     print_summary(t_results)
-    with open(f"{RESULTS_DIR}/temperature_results.csv", "w", newline="") as f:
+    with open(f"{RESULTS_DIR}/temperature_results.csv", "a", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=SUMMARY_FIELDS)
         writer.writeheader()
         writer.writerows(t_results)
